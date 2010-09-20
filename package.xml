@@ -11,10 +11,10 @@
   <active>yes</active>
  </lead>
  <date>2010-09-20</date>
- <time>03:34:00</time>
+ <time>04:15:00</time>
  <version>
-  <release>0.1.0</release>
-  <api>0.1.0</api>
+  <release>0.2.0</release>
+  <api>0.2.0</api>
  </version>
  <stability>
   <release>alpha</release>
@@ -22,7 +22,7 @@
  </stability>
  <license uri="http://www.opensource.org/licenses/bsd-license.php">The BSD License</license>
  <notes>
-* initial release
+* fix up (status code)
  </notes>
  <contents>
   <dir name="/">
