@@ -78,6 +78,8 @@ class Lagged_Test_PHPUnit_ControllerTestCase_Listener implements PHPUnit_Framewo
 
         echo "RESPONSE\n\n";
 
+        echo "Status Code: " . $test->getResponse()->getHttpResponseCode() . "\n\n";
+
         echo "Headers:\n\n";
 
         foreach ($test->getResponse()->getHeaders() as $header) {
