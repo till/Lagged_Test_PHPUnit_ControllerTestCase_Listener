@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.9.0" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>Lagged_Test_PHPUnit_ControllerTestCase_Listener</name>
+ <channel>till.pearfarm.org</channel>
+ <summary>Just listen!</summary>
+ <description>A PHPUnit listener for Zend_Test_PHPUnit_ControllerTestCase</description>
+ <lead>
+  <name>Till Klampaeckel</name>
+  <user>till</user>
+  <email>till@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2010-09-20</date>
+ <time>03:34:00</time>
+ <version>
+  <release>0.1.0</release>
+  <api>0.1.0</api>
+ </version>
+ <stability>
+  <release>alpha</release>
+  <api>alpha</api>
+ </stability>
+ <license uri="http://www.opensource.org/licenses/bsd-license.php">The BSD License</license>
+ <notes>
+* initial release
+ </notes>
+ <contents>
+  <dir name="/">
+   <dir name="/Lagged">
+    <dir name="/Test">
+     <dir name="/PHPUnit">
+      <dir name="/ControllerTestCase">
+       <file name="Listener.php" role="php">
+        <tasks:replace from="@package_version@" to="version" type="package-info" />
+       </file>
+      </dir>
+     </dir>
+    </dir>
+   </dir>
+   <file baseinstalldir="Lagged_Test_PHPUnit_ControllerTestCase_Listener" name="README.md" role="doc" />
+  </dir> <!-- / -->
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.0.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.9.0</min>
+   </pearinstaller>
+   <package>
+    <name>PHPUnit</name>
+    <channel>pear.phpunit.de</channel>
+    <min>3.4.15</min>
+   </package>
+  </required>
+ </dependencies>
+ <phprelease />
+</package>
