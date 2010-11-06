@@ -23,6 +23,7 @@
  <license uri="http://www.opensource.org/licenses/bsd-license.php">The BSD License</license>
  <notes>
 * fix notice: https://github.com/till/Lagged_Test_PHPUnit_ControllerTestCase_Listener/issues/closed#issue/1
+* fix fatal error: https://github.com/till/Lagged_Test_PHPUnit_ControllerTestCase_Listener/issues/closed#issue/2
  </notes>
  <contents>
   <dir name="/">
