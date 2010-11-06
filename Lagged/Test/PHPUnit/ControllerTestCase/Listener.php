@@ -76,6 +76,13 @@ class Lagged_Test_PHPUnit_ControllerTestCase_Listener implements PHPUnit_Framewo
 
         $response = $test->getResponse();
 
+        if ($response instanceof PHPUnit_Framework_Warning) {
+            /**
+             * @desc Skip this: PHPUnit issued a warning: maybe no test cases or similar
+             */
+            return;
+        }
+
         printf("Test '%s' failed.\n", $test->getName());
 
         echo "RESPONSE\n\n";
