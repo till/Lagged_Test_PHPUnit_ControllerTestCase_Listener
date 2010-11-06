@@ -74,15 +74,17 @@ class Lagged_Test_PHPUnit_ControllerTestCase_Listener implements PHPUnit_Framewo
         $time
     ) {
 
+        $response = $test->getResponse();
+
         printf("Test '%s' failed.\n", $test->getName());
 
         echo "RESPONSE\n\n";
 
-        echo "Status Code: " . $test->getResponse()->getHttpResponseCode() . "\n\n";
+        echo "Status Code: " . $response->getHttpResponseCode() . "\n\n";
 
         echo "Headers:\n\n";
 
-        foreach ($test->getResponse()->getHeaders() as $header) {
+        foreach ($response->getHeaders() as $header) {
             $replace = 'false';
             if ($header['replace'] === true) {
                 $replace = 'true';
@@ -92,13 +94,13 @@ class Lagged_Test_PHPUnit_ControllerTestCase_Listener implements PHPUnit_Framewo
 
         echo "\n";
 
-        echo "Body:\n\n" . $test->getResponse()->getBody() . "\n\n";
+        echo "Body:\n\n" . $response->getBody() . "\n\n";
 
-        if ($test->getResponse()->isException()) {
+        if ($response->isException()) {
 
             echo "Exceptions:\n\n";
 
-            foreach ($test->getResponse()->getException() as $exception) {
+            foreach ($response->getException() as $exception) {
 
                 echo "\t * Message: {$exception->getMessage()}\n";
                 echo "\t * File:    {$exception->getFile()}\n";
