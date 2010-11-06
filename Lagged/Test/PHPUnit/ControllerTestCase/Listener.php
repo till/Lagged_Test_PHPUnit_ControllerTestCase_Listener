@@ -46,7 +46,7 @@
 /**
  * @ignore
  */
-require_once 'PHPUnit/Framework.php';
+require_once 'PHPUnit/Framework/TestListener.php';
 
 /**
  * A listener!
@@ -67,7 +67,7 @@ class Lagged_Test_PHPUnit_ControllerTestCase_Listener implements PHPUnit_Framewo
     ) {
         printf("Error while running test '%s'.\n", $test->getName());
     }
- 
+
     public function addFailure (
         PHPUnit_Framework_Test $test,
         PHPUnit_Framework_AssertionFailedError $e,
@@ -107,7 +107,7 @@ class Lagged_Test_PHPUnit_ControllerTestCase_Listener implements PHPUnit_Framewo
                 echo "\n";
             }
         }
-    } 
+    }
 
     public function addIncompleteTest (
         PHPUnit_Framework_Test $test,
@@ -116,7 +116,7 @@ class Lagged_Test_PHPUnit_ControllerTestCase_Listener implements PHPUnit_Framewo
     ) {
         // do nada
     }
- 
+
     public function addSkippedTest (
         PHPUnit_Framework_Test $test,
         Exception $e,
@@ -124,21 +124,22 @@ class Lagged_Test_PHPUnit_ControllerTestCase_Listener implements PHPUnit_Framewo
     ) {
         // do nada
     }
- 
+
     public function startTest(PHPUnit_Framework_Test $test)
     {
         // do nada
     }
- 
+
     public function endTest(PHPUnit_Framework_Test $test, $time)
     {
+        // do nada
     }
- 
+
     public function startTestSuite(PHPUnit_Framework_TestSuite $suite)
     {
         // do nada
     }
- 
+
     public function endTestSuite(PHPUnit_Framework_TestSuite $suite)
     {
         // do nada
