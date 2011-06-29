@@ -79,7 +79,9 @@ class Lagged_Test_PHPUnit_ControllerTestCase_Listener implements PHPUnit_Framewo
              */
             return;
         }
-
+        if(!($test instanceof Zend_Test_PHPUnit_ControllerTestCase)) {
+            return;
+        }
         $response = $test->getResponse();
 
         printf("Test '%s' failed.\n", $test->getName());
