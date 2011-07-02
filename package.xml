@@ -23,6 +23,7 @@
  <license uri="http://www.opensource.org/licenses/bsd-license.php">The BSD License</license>
  <notes>
 * bugfix: https://github.com/till/Lagged_Test_PHPUnit_ControllerTestCase_Listener/pull/3
+* improvement: added usage example to README.md
  </notes>
  <contents>
   <dir name="/">
