@@ -10,10 +10,10 @@
   <email>till@php.net</email>
   <active>yes</active>
  </lead>
- <date>2011-07-02</date>
- <time>16:30:00</time>
+ <date>2012-10-26</date>
+ <time>14:55:00</time>
  <version>
-  <release>0.4.0</release>
+  <release>0.5.0</release>
   <api>0.3.0</api>
  </version>
  <stability>
@@ -22,8 +22,7 @@
  </stability>
  <license uri="http://www.opensource.org/licenses/bsd-license.php">The BSD License</license>
  <notes>
-* bugfix: https://github.com/till/Lagged_Test_PHPUnit_ControllerTestCase_Listener/pull/3
-* improvement: added usage example to README.md
+* 0.5.0 pre-release (this was uncommitted for a year, just pushing it out)
  </notes>
  <contents>
   <dir name="/">
