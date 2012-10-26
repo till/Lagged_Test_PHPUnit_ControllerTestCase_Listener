@@ -2,8 +2,10 @@
 
 ### Install
 
-    pear channel-discover till.pearfarm.org
-    pear install till.pearfarm.org/Lagged_Test_PHPUnit_ControllerTestCase_Listener-alpha
+    pear channel-discover easybib.github.com/pear
+    pear install easybib/Lagged_Test_PHPUnit_ControllerTestCase_Listener-alpha
+
+Btw - [there's more](http://easybib.github.com/pear).
 
 ### Usage
 
