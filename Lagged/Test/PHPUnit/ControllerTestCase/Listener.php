@@ -1,7 +1,7 @@
 <?php
 /**
  * +-----------------------------------------------------------------------+
- * | Copyright (c) 2010, Till Klampaeckel                                  |
+ * | Copyright (c) 2010-2011, Till Klampaeckel                             |
  * | All rights reserved.                                                  |
  * |                                                                       |
  * | Redistribution and use in source and binary forms, with or without    |
@@ -44,12 +44,7 @@
  */
 
 /**
- * @ignore
- */
-require_once 'PHPUnit/Framework/TestListener.php';
-
-/**
- * A listener!
+ * A listener to enhance Zend_Test_PHPUnit_ControllerTestCase.
  *
  * @category Testing
  * @package  Lagged_Test_PHPUnit_ControllerTestCase_Listener
@@ -82,41 +77,86 @@ class Lagged_Test_PHPUnit_ControllerTestCase_Listener implements PHPUnit_Framewo
         if(!($test instanceof Zend_Test_PHPUnit_ControllerTestCase)) {
             return;
         }
+
         $response = $test->getResponse();
 
         printf("Test '%s' failed.\n", $test->getName());
 
-        echo "RESPONSE\n\n";
+        echo PHP_EOL;
+        echo "=== THIS IS THE RESPONSE" . PHP_EOL . PHP_EOL;
 
-        echo "Status Code: " . $response->getHttpResponseCode() . "\n\n";
+        echo "  Status Code: " . $response->getHttpResponseCode() . "\n\n";
 
-        echo "Headers:\n\n";
+        $headers = $response->getHeaders();
 
-        foreach ($response->getHeaders() as $header) {
-            $replace = 'false';
-            if ($header['replace'] === true) {
-                $replace = 'true';
+        if (count($headers) > 0) {
+            echo "  Headers:\n\n";
+
+            foreach ($headers as $header) {
+                $replace = 'false';
+                if ($header['replace'] === true) {
+                    $replace = 'true';
+                }
+                echo "\t {$header['name']} - {$header['value']} (replace: {$replace})\n";
             }
-            echo "\t {$header['name']} - {$header['value']} (replace: {$replace})\n";
+
+            echo "\n";
         }
 
-        echo "\n";
+        $body = $response->getBody();
+        if (!empty($body)) {
+            echo "  Body:" . PHP_EOL . PHP_EOL;
+            echo $body . PHP_EOL . PHP_EOL;
+        }
 
-        echo "Body:\n\n" . $response->getBody() . "\n\n";
+        //var_dump(get_class_methods($test));
+
+        $exceptions = $response->getException();
 
         if ($response->isException()) {
 
-            echo "Exceptions:\n\n";
+            echo "  Exceptions:\n\n";
 
-            foreach ($response->getException() as $exception) {
+            foreach ($exceptions as $exception) {
 
-                echo "\t * Message: {$exception->getMessage()}\n";
-                echo "\t * File:    {$exception->getFile()}\n";
-                echo "\t * Line:    {$exception->getLine()}\n";
+                echo "\t * Message: {$exception->getMessage()}" . PHP_EOL;
+                echo "\t * File:    {$exception->getFile()}" . PHP_EOL;
+                echo "\t * Line:    {$exception->getLine()}" . PHP_EOL;
 
-                echo "\n";
+                echo PHP_EOL;
             }
         }
+
+        var_dump(get_class_methods($e));
+
+        $trace = $e->getTrace();
+        if (count($trace) > 0) {
+
+            //var_dump($trace);
+
+            echo "=== TRACE" . PHP_EOL . PHP_EOL;
+
+            foreach ($trace as $_t) {
+
+                if (isset($_t['file'])) {
+                    if (strstr($_t['file'], 'PHPUnit/') || strstr($_t['file'], 'bin/phpunit')) {
+                        continue;
+                    }
+                }
+
+                if (isset($_t['file']) && isset($_t['line'])) {
+                    echo "  File: {$_t['file']}, Line: {$_t['line']}" . PHP_EOL;
+                }
+                if (isset($_t['class'])) {
+                    echo sprintf('  %s%s%s', $_t['class'], $_t['type'], $_t['function']);
+                } else {
+                    echo "  {$_t['function']}";
+                }
+                echo PHP_EOL . PHP_EOL;
+            }
+
+        }
+
     }
 
     public function addIncompleteTest (
